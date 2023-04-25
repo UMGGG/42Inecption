@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+	mariadb:
+		build:
+			context: ./requierments/mariadb
+			dockerfile: ./Dockerfile
+		networks:
+			- intra
+		volumes:
+			- db:/var/lib/mysql
+		expose:
+			- "3306"
+		env_file:
+			- .env
+		restart: always
+
+	nginx:
+		build:
+			context: ./requierments/nginx
+			dockerfile: ./Dockerfile
+		volumes:
+			- wp:/var/www/html
+		ports:
+			- "443:443"
+		networks:
+			- intra
+		depends_on:
+			- wordpress
+		env_file:
+			- .env
+		restart: always
+
+	wordpress:
+		build:
+			context: ./requierments/wordpress
+			dockerfile: ./Dockerfile
+		depends_on:
+			- mariadb
+		expose:
+			- "9000"
+		volumes:
+			- wp:/var/www/html
+		networks:
+			- intra
+		restart: always
+volumes:
+	wp:
+		driver: local
+		driver_opts:
+			type: none
+			o: bind
+			device: $HOME/data/wordpress
+
+	db:
+		driver: local
+		driver_opts:
+			type: none
+			o: bind
+			device: $HOME/data/mariadb
+
+networks:
+	intra:
+		driver: bridge
