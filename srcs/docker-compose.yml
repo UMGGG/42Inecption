@@ -1,5 +1,12 @@
 version: '3'
 
+# context: 빌드명령을 실행할 경로
+# dockerfile: 빌드를 실행할 파일
+# expose: 같은 네트워크에서 접근시 사용할 포트
+# ports: 호스트에서:같은네트워크
+# env_file: 환경변수가 저장되있는 파일
+# volumes: 컨테이너에 마운트할 볼륨 경로 host::container
+# depends_on: 종속성 순서대로 실행될 수 있도록 설정
 services:
 	mariadb:
 		build:
