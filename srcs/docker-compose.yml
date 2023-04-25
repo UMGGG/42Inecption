@@ -16,8 +16,6 @@ services:
 			- intra
 		volumes:
 			- db:/var/lib/mysql
-		expose:
-			- "3306"
 		env_file:
 			- .env
 		restart: always
@@ -44,8 +42,6 @@ services:
 			dockerfile: ./Dockerfile
 		depends_on:
 			- mariadb
-		expose:
-			- "9000"
 		volumes:
 			- wp:/var/www/html
 		networks:
