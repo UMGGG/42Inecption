@@ -17,20 +17,6 @@ then
 	wp core download --allow-root;
 	mv /var/www/wp-config.php /var/www/html/
 	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@21"
 	wp core install \
 	--allow-root \
 	--path=${WP_PATH} \
@@ -41,7 +27,9 @@ then
 	--admin_email=${WP_ADMIN_EMAIL} \
 	--skip-email
 
-	wp user create ${WP_USER_LOGIN} \
+	wp user create \
+	--allow-root \
+	${WP_USER_LOGIN} \
 	${WP_USER_EMAIL} \
 	--user_pass=${WP_USER_PASSWORD} \
 	--role=author
