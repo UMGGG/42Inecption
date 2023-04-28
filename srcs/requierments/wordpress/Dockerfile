@@ -5,17 +5,18 @@ RUN		apt-get update -y
 		apt-get -y install \
 		php7.3 \
 		php-fpm \
-		php-cli \
 		wget \
 		curl \
-		php-mysql \
-		php-mbstring \
-		php-xml \
+		php-mysqli \
 		sendmail
 
 EXPOSE	9000
 
-RUN		wget https://wordpress.org/latest.tar.gz && \
-		tar -xvf latest.tar.gz && \
-		mv /wordpress/* /var/www/html && \
-		rm -r /wordpress latest.tar.gz
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
+COPY ./tools /var/www/
+
+RUN chmod +x /var/www/wordpress_setting.sh
+
+ENTRYPOINT [ "/var/www/wordpress_start.sh" ]
+
+CMD ["/usr/sbin/php-fpm7.3", "-F -R"]

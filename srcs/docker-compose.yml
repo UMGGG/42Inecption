@@ -7,6 +7,10 @@ version: '3'
 # env_file: 환경변수가 저장되있는 파일
 # volumes: 컨테이너에 마운트할 볼륨 경로 host::container
 # depends_on: 종속성 순서대로 실행될 수 있도록 설정
+# driver: 볼륨에 사용할 볼륨 드라이버
+# driver_opts: 볼륨 드라이버에 전달할 옵션 목록
+# (type: 사용할 볼륨 드라이버 유형, device: 호스트 파일 시스템에서 사용할 경로, o: 마운트 옵션)
+
 services:
 	mariadb:
 		build:
@@ -47,20 +51,21 @@ services:
 		networks:
 			- intra
 		restart: always
+
 volumes:
 	wp:
 		driver: local
 		driver_opts:
 			type: none
 			o: bind
-			device: $HOME/data/wordpress
+			device: /home/jaeyjeon/data/wordpress
 
 	db:
 		driver: local
 		driver_opts:
 			type: none
 			o: bind
-			device: $HOME/data/mariadb
+			device: /home/jaeyjeon/data/mariadb
 
 networks:
 	intra:
