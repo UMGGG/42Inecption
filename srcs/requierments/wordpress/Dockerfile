@@ -6,6 +6,9 @@ RUN		apt-get -y install \
 		php-fpm \
 		wget \
 		php-mysqli \
+		php-mbstring \
+		php-xml \
+		php-cli \
 		sendmail
 
 EXPOSE	9000
