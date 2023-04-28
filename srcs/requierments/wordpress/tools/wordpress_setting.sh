@@ -30,7 +30,7 @@ then
 	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
 	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
 	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
-	echo "Wordpress user create...@@@@@@@@@@@@@@@@@2"
+	echo "Wordpress user create...@@@@@@@@@@@@@@@@@21"
 	wp core install \
 	--allow-root \
 	--path=${WP_PATH} \
