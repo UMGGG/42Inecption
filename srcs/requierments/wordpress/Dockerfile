@@ -16,6 +16,6 @@ COPY ./tools /var/www/
 
 RUN chmod +x /var/www/wordpress_setting.sh
 
-ENTRYPOINT [ "/var/www/wordpress_start.sh" ]
+ENTRYPOINT [ "/var/www/wordpress_setting.sh" ]
 
 CMD ["/usr/sbin/php-fpm7.3", "-F -R"]

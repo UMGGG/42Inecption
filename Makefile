@@ -6,7 +6,7 @@
 #    By: jaeyjeon <jaeyjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 04:10:55 by jaeyjeon          #+#    #+#              #
-#    Updated: 2023/04/28 19:58:59 by jaeyjeon         ###   ########.fr        #
+#    Updated: 2023/04/28 20:28:37 by jaeyjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,7 @@ up:
 
 # rmi all 옵션으로 모든 이미지를 삭제, volumes 옵션으로 모든 볼륨을 삭제
 clean:
-	docker stop $$(docker ps -qa);\
-	docker rm $$(docker ps -qa);\
-	docker rmi -f $$(docker images -qa);\
-	docker volume rm $$(docker volume ls -q);\
-	docker network rm $$(docker network ls -q);\
+	docker-compose -f ./srcs/docker-compose.yml down --rmi all --volumes
 
 fclean:
 	make clean
