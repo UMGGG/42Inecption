@@ -6,15 +6,15 @@
 #    By: jaeyjeon <jaeyjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 04:10:55 by jaeyjeon          #+#    #+#              #
-#    Updated: 2023/04/28 22:09:34 by jaeyjeon         ###   ########.fr        #
+#    Updated: 2023/04/28 22:17:47 by jaeyjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # f옵션을 사용해 현재의 경로가아닌 다른곳의 yml파일을 사용
 all:
-	mkdir -p home/jaeyjeon/data/wordpress --build
+	mkdir -p home/jaeyjeon/data/wordpress
 	mkdir -p home/jaeyjeon/data/mariadb
-	docker-compose -f ./srcs/docker-compose.yml up
+	docker-compose -f ./srcs/docker-compose.yml up --build
 
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
