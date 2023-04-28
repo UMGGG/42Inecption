@@ -58,14 +58,14 @@ volumes:
         driver_opts:
             type: none
             o: bind
-            device: /home/jaeyjeon/data/wordpress
+            device: 'home/jaeyjeon/data/wordpress'
 
     db:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: /home/jaeyjeon/data/mariadb
+            device: 'home/jaeyjeon/data/mariadb'
 
 networks:
     intra:

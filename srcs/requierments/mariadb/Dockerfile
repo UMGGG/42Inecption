@@ -6,7 +6,7 @@ RUN		apt-get -y install mariadb-server
 EXPOSE	3306
 
 COPY	./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
-COPY	./tools /var/www/
+COPY	./tools/initial_db.sql /var/www/
 
 RUN		service mysql start && mysql < /var/www/initial_db.sql && rm -f /var/www/initial_db.sql;
 
