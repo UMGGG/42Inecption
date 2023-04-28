@@ -18,6 +18,10 @@ then
 	mv /var/www/wp-config.php /var/www/html/
 	echo "Wordpress core create..."
 	echo ${WP_ADMIN_EMAIL}
+	echo ${WP_PATH}
+	echo ${WP_URL}
+	echo ${WP_ADMIN_PASSWORD}
+	echo ${WP_ADMIN_LOGIN}
 	wp core install \
 	--allow-root \
 	--path=${WP_PATH} \
