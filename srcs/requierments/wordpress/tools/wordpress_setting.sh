@@ -14,9 +14,10 @@ then
 	chmod +x wp-cli.phar;
 	mv wp-cli.phar /usr/local/bin/wp;
 	cd /var/www/html;
-	wp core download --allow-root;
+	wp core download --allow-root --path=/var/www/html
 	mv /var/www/wp-config.php /var/www/html/
 	echo "Wordpress core create..."
+	echo ${WP_ADMIN_EMAIL}
 	wp core install \
 	--allow-root \
 	--path=${WP_PATH} \
