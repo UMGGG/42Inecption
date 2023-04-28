@@ -24,6 +24,18 @@ services:
             - .env
         restart: always
 
+    wordpress:
+        build:
+            context: ./requierments/wordpress
+            dockerfile: ./Dockerfile
+        depends_on:
+            - mariadb
+        volumes:
+            - wp:/var/www/html
+        networks:
+            - intra
+        restart: always
+
     nginx:
         build:
             context: ./requierments/nginx
@@ -38,18 +50,6 @@ services:
             - wordpress
         env_file:
             - .env
-        restart: always
-
-    wordpress:
-        build:
-            context: ./requierments/wordpress
-            dockerfile: ./Dockerfile
-        depends_on:
-            - mariadb
-        volumes:
-            - wp:/var/www/html
-        networks:
-            - intra
         restart: always
 
 volumes:

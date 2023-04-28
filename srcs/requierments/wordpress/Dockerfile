@@ -5,7 +5,6 @@ RUN		apt-get -y install \
 		php7.3 \
 		php-fpm \
 		wget \
-		curl \
 		php-mysqli \
 		sendmail
 
@@ -18,4 +17,4 @@ RUN chmod +x /var/www/wordpress_setting.sh
 
 ENTRYPOINT [ "/var/www/wordpress_setting.sh" ]
 
-CMD ["/usr/sbin/php-fpm7.3", "-F -R"]
+CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
