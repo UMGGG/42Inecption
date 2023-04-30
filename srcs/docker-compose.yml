@@ -50,6 +50,8 @@ services:
             - wp:/var/www/html
         networks:
             - intra
+        env_file:
+            - .env
         restart: always
 
 volumes:
