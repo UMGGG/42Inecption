@@ -8,6 +8,6 @@ EXPOSE	3306
 COPY	./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY	./tools/mariadb_setting.sh /
 
-RUN chmod +x /mariadb_setting.sh
+RUN		service mysql start && mysql < /var/www/initial_db.sql && rm -f /initial_db.sql;
 
-CMD		["/mariadb_setting.sh"]
+CMD		["mysqld"]
