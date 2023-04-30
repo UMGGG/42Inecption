@@ -6,7 +6,7 @@
 #    By: jaeyjeon <jaeyjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 04:10:55 by jaeyjeon          #+#    #+#              #
-#    Updated: 2023/05/01 02:51:30 by jaeyjeon         ###   ########.fr        #
+#    Updated: 2023/05/01 03:25:51 by jaeyjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 all:
 	mkdir -p home/jaeyjeon/data/wordpress
 	mkdir -p home/jaeyjeon/data/mariadb
+	sudo echo "127.0.0.1 jaeyjeon.42.fr" >> /etc/hosts
 	docker-compose -f ./srcs/docker-compose.yml up --build
 
 down:
