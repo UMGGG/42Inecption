@@ -8,6 +8,6 @@ EXPOSE 443
 # COPY ./conf/default /etc/nginx/sites-enabled/default
 COPY ./tools/nginx_setting.sh /
 
-chmod +x /nginx_setting.sh
+RUN chmod +x /nginx_setting.sh
 
 CMD [ "/nginx_setting.sh" ]

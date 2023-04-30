@@ -8,6 +8,6 @@ EXPOSE	9000
 COPY ./tools/wordpress_setting.sh /
 COPY ./tools/wp-config.php /
 
-chmod +x /wordpress_setting.sh
+RUN chmod +x /wordpress_setting.sh
 
 CMD [ "/wordpress_setting.sh" ]
