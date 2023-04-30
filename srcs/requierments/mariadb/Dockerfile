@@ -10,7 +10,4 @@ COPY	./tools/mariadb_setting.sh /
 
 RUN chmod +x /mariadb_setting.sh
 
-RUN chown -R mysql:mysql /run/mysqld
-RUN chown -R mysql:mysql /var/lib/mysql
-
 CMD		["/mariadb_setting.sh"]
