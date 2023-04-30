@@ -6,7 +6,7 @@
 #    By: jaeyjeon <jaeyjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 04:10:55 by jaeyjeon          #+#    #+#              #
-#    Updated: 2023/05/01 00:50:43 by jaeyjeon         ###   ########.fr        #
+#    Updated: 2023/05/01 02:51:30 by jaeyjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ clean:
 
 fclean:
 	make clean
-	rm -rf home/jaeyjeon/data
+	sudo rm -rf home/jaeyjeon/data
 
 re:
 	make fclean

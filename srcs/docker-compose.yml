@@ -12,21 +12,21 @@ version: '3'
 # (type: 사용할 볼륨 드라이버 유형, device: 호스트 파일 시스템에서 사용할 경로, o: 마운트 옵션)
 
 services:
-#        build:
-#    nginx:
-#            context: ./requierments/nginx
-#            dockerfile: ./Dockerfile
-#        volumes:
-#            - wp:/var/www/html
-#        ports:
-#            - "443:443"
-#        networks:
-#            - intra
-#        depends_on:
-#            - wordpress
-#        env_file:
-#            - .env
-#        restart: always
+        build:
+    nginx:
+            context: ./requierments/nginx
+            dockerfile: ./Dockerfile
+        volumes:
+            - wp:/var/www/html
+        ports:
+            - "443:443"
+        networks:
+            - intra
+        depends_on:
+            - wordpress
+        env_file:
+            - .env
+        restart: always
 
     mariadb:
         build:
