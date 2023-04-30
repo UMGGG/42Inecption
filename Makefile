@@ -6,7 +6,7 @@
 #    By: jaeyjeon <jaeyjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 04:10:55 by jaeyjeon          #+#    #+#              #
-#    Updated: 2023/04/28 22:17:47 by jaeyjeon         ###   ########.fr        #
+#    Updated: 2023/05/01 00:07:05 by jaeyjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@
 all:
 	mkdir -p home/jaeyjeon/data/wordpress
 	mkdir -p home/jaeyjeon/data/mariadb
-	docker-compose -f ./srcs/docker-compose.yml up --build
+	docker-compose -f ./srcs/docker-compose.yml up -d
 
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
 
 up:
-	docker-compose -f ./srcs/docker-compose.yml up --build -d
+	docker-compose -f ./srcs/docker-compose.yml up
 
 # rmi all 옵션으로 모든 이미지를 삭제, volumes 옵션으로 모든 볼륨을 삭제
 clean:

@@ -1,16 +1,27 @@
 #!/bin/bash
 
 mkdir -p /var/www/html
-wget https://wordpress.org/latest.tar.gz \
-tar -xvf latest.tar.gz && \
-mv /wordpress/* /var/www/html/ && \
-chown -R www-data:www-data /var/www/html && \
-rm -r /wordpress latest.tar.gz
 
-mv /var/www/wp-config.php /var/www/html/wp-config.php
-rm -r /var/www/wp-config.php
-mv ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+cd /var/www/html
 
-chmod -R +x /var/www/html
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+mv wp-cli.phar /usr/local/bin/wp
+wp core download --allow-root
+
+mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+mv /wp-config.php /var/www/html/wp-config.php
+
+sed -i -r "s/db1/$DB_NAME/1"   wp-config.php
+sed -i -r "s/user/$DB_USER/1"  wp-config.php
+sed -i -r "s/pwd/$DB_USER_PASSWORD/1"    wp-config.php
+
+wp core install --url=$WP_URL/ --title=$WP_TITLE --admin_user=$WP_ADMIN_LOGIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+
+wp user create $WP_USER_LOGIN $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PWD --allow-root
+
+sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+
+mkdir /run/php
 
 /usr/sbin/php-fpm7.3 -R -F
