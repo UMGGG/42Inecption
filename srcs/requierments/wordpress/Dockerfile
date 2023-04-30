@@ -10,7 +10,7 @@ RUN		apt-get -y install \
 		php-xml \
 		php-cli \
 		curl \
-		dumb-init \
+		dumb-init
 
 EXPOSE	9000
 
@@ -19,6 +19,6 @@ COPY ./tools /var/www/
 
 RUN chmod +x /var/www/wordpress_setting.sh
 
-ENTRYPOINT ["/usr/bin/bumb-init" "--" "/var/www/wordpress_setting.sh" ]
+ENTRYPOINT ["/usr/bin/dumb-init" "--" "/var/www/wordpress_setting.sh" ]
 
 # CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]

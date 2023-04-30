@@ -1,7 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update -y
-RUN apt-get install -y nginx openssl
+RUN apt-get install -y nginx openssl dumb-init
 
 EXPOSE 443
 
@@ -10,6 +10,6 @@ COPY ./tools/nginx_setting.sh /var/www
 
 RUN chmod +x /var/www/nginx_setting.sh
 
-ENTRYPOINT [ "var/www/nginx_setting.sh" ]
+ENTRYPOINT [ "dumb-init", "--" ]
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["var/www/nginx_setting.sh"]
