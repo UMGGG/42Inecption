@@ -12,47 +12,47 @@ version: '3'
 # (type: 사용할 볼륨 드라이버 유형, device: 호스트 파일 시스템에서 사용할 경로, o: 마운트 옵션)
 
 services:
-    build:
-        nginx:
-                context: ./requierments/nginx
-                dockerfile: ./Dockerfile
-            volumes:
-                - wp:/var/www/html
-            ports:
-                - "443:443"
-            networks:
-                - intra
-            depends_on:
-                - wordpress
-            env_file:
-                - .env
-            restart: always
+    nginx:
+        build:
+            context: ./requierments/nginx
+            dockerfile: ./Dockerfile
+        volumes:
+            - wp:/var/www/html
+        ports:
+            - "443:443"
+        networks:
+            - intra
+        depends_on:
+            - wordpress
+        env_file:
+            - .env
+        restart: always
 
-        mariadb:
-            build:
-                context: ./requierments/mariadb
-                dockerfile: ./Dockerfile
-            networks:
-                - intra
-            volumes:
-                - db:/var/lib/mysql
-            env_file:
-                - .env
-            restart: always
+    mariadb:
+        build:
+            context: ./requierments/mariadb
+            dockerfile: ./Dockerfile
+        networks:
+            - intra
+        volumes:
+            - db:/var/lib/mysql
+        env_file:
+            - .env
+        restart: always
 
-        wordpress:
-            build:
-                context: ./requierments/wordpress
-                dockerfile: ./Dockerfile
-            depends_on:
-                - mariadb
-            volumes:
-                - wp:/var/www/html
-            networks:
-                - intra
-            env_file:
-                - .env
-            restart: always
+    wordpress:
+        build:
+            context: ./requierments/wordpress
+            dockerfile: ./Dockerfile
+        depends_on:
+            - mariadb
+        volumes:
+            - wp:/var/www/html
+        networks:
+            - intra
+        env_file:
+            - .env
+        restart: always
 
 volumes:
     wp:
