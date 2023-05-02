@@ -21,4 +21,4 @@ COPY ./conf/default /etc/nginx/sites-enabled/default
 
 # ENTRYPOINT [ "/usr/bin/dumb-init", "--"]
 
-CMD [ "nginx" "-g" "daemon off;" ]
+CMD [ "nginx", "-g", "daemon off;" ]
