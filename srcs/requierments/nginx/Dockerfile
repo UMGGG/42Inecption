@@ -3,6 +3,8 @@ FROM debian:buster
 RUN apt-get update -y
 RUN apt-get install -y nginx openssl dumb-init
 
+RUN mkdir -p /etc/ssl
+
 EXPOSE 443
 
 COPY ./conf/default /etc/nginx/sites-enabled/default
