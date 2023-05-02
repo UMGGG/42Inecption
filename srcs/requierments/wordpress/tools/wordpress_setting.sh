@@ -2,6 +2,7 @@
 
 
 mkdir -p /var/www/html
+mkdir -p /var/run/
 
 cd /var/www/html
 if [ ! -f /var/www/html/wp-config.php ]; then
