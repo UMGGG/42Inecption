@@ -6,7 +6,7 @@
 #    By: jaeyjeon <jaeyjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 04:10:55 by jaeyjeon          #+#    #+#              #
-#    Updated: 2023/05/03 04:31:51 by jaeyjeon         ###   ########.fr        #
+#    Updated: 2023/05/03 04:32:54 by jaeyjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ fclean:
 	sudo rm -rf home/jaeyjeon/data
 
 dangling-clean:
-	docker rmi -f $(docker images -f "dangling=true" -q)
+	docker rm $(docker ps --filter status=exited -q)
 	docker rmi $(docker images -f "dangling=true" -q)
 
 re:
